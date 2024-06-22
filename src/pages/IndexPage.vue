@@ -1,17 +1,14 @@
 <template>
-  <div class="tw-bg-red-600 tw-w-[800px] tw-h-[500px]">
-    <MapComponent class="tw-w-full tw-h-full" :options="{mapKey:'web.a0be47102c054a1887734fb0b75dc0af',mapType:MapTypes.neshanVectorNight}"/>
-  </div>
-  <div v-if="!loading">sdfsdf{{job}}</div>
+  <p>Latitude: {{ coordinates.lat }}</p>
+  <p>Longitude: {{ coordinates.lng }}</p>
+  <Map @updateCoordinates="updateCoordinates" />
 </template>
-<script setup>
+<script setup lang="ts">
+import Map from 'components/Map.vue';
+import { ref } from 'vue';
+const coordinates = ref({ lat: null, lng: null });
 
-import {MapComponent, MapTypes} from '@neshan-maps-platform/mapbox-gl-vue';
-import '@neshan-maps-platform/mapbox-gl-vue/dist/style.css';
-import { fetchJobs } from 'src/composables/job/Job.Req';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const {job,loading} = fetchJobs();
+function updateCoordinates(newCoordinates: any) {
+  coordinates.value = newCoordinates;
+}
 </script>
-<style lang="scss" scoped>
-</style>
-

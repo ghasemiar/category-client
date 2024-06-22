@@ -203,6 +203,14 @@
     "@types/mapbox-gl" "^2.7.17"
     vazirmatn "^33.0.3"
 
+"@neshan-maps-platform/mapbox-gl@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@neshan-maps-platform/mapbox-gl/-/mapbox-gl-1.1.3.tgz#28b458a889e538cf667ab53e0cb0ee9d307d07f2"
+  integrity sha512-Fl6pb/Vv2963it6aO65nnsJBZdm+QNEIHd2MNBeO1AUl7gwHif/0iltaL+gMmRCA9vvKqUUlj+cowOW7SrkY2g==
+  dependencies:
+    "@types/mapbox-gl" "^2.7.17"
+    vazirmatn "^33.0.3"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"

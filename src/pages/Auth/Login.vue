@@ -1,5 +1,5 @@
 <template>
-  <q-page class="tw-container tw-mx-auto tw-bg-red-500">
+  <div class="tw-container tw-mx-auto">
     <q-form @submit="onSubmit">
       <q-input
         v-model="username"
@@ -19,7 +19,7 @@
       <q-btn type="submit" label="Login" />
     </q-form>
     <RouterLink to="register">do not have any account</RouterLink>
-  </q-page>
+  </div>
 </template>
 
 <script setup lang="ts">
