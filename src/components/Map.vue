@@ -3,7 +3,7 @@
   <pre id="coordinates" class="coordinates"></pre>
 </template>
 
-<script setup>
+<script setup >
 import '@neshan-maps-platform/mapbox-gl/dist/NeshanMapboxGl.css';
 import nmp_mapboxgl from '@neshan-maps-platform/mapbox-gl';
 import { onMounted, ref } from 'vue';
@@ -47,9 +47,9 @@ onMounted(() => {
 });
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 #map {
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 

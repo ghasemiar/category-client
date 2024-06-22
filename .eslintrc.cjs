@@ -70,7 +70,8 @@ module.exports = {
   rules: {
 
     'prefer-promise-reject-errors': 'off',
-
+    '@typescript-eslint/no-unused-vars': 'off', // For TypeScript projects
+    '@typescript-eslint/no-explicit-any': 'off',
     quotes: "off",
     'vue/multi-word-component-names': 'off',
 

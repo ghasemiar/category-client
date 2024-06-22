@@ -1,12 +1,6 @@
 import { api } from 'boot/axios';
-export interface jobI {
-  id: number;
-  name: string;
-  parent?: number;
+import { useFetchData } from 'src/helper/AxiosHelper';
+export const getAllCitiesService = ()=>{
+  const {fetchData} = useFetchData('get',)
+  return {fetchData}
 }
-export const getAllCities = async (
-  provinceId: number
-): Promise<jobI | Error> => {
-  const response = await api.get(`/city/${provinceId}`);
-  return response.data;
-};
