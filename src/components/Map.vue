@@ -3,12 +3,18 @@
   <pre id="coordinates" class="coordinates"></pre>
 </template>
 
-<script setup >
+<script setup>
 import '@neshan-maps-platform/mapbox-gl/dist/NeshanMapboxGl.css';
 import nmp_mapboxgl from '@neshan-maps-platform/mapbox-gl';
 import { onMounted, ref } from 'vue';
 
-// Define the emit function
+//Define props
+const props = defineProps({
+  latProps: { type: Number, required: false },
+  lngProps: { type: Number, required: false },
+});
+
+// Define emits
 const emit = defineEmits(['updateCoordinates']);
 
 const lng = ref();
@@ -18,9 +24,9 @@ onMounted(() => {
   const map = new nmp_mapboxgl.Map({
     mapType: nmp_mapboxgl.Map.mapTypes.neshanVector,
     container: 'map',
-    zoom: 11,
+    zoom: 12,
     pitch: 0,
-    center: [51.389, 35.6892],
+    center: [props.lngProps || 51.389, props.latProps || 35.6892],
     minZoom: 2,
     maxZoom: 21,
     trackResize: true,
@@ -30,7 +36,7 @@ onMounted(() => {
   });
 
   const marker = new nmp_mapboxgl.Marker({ draggable: true })
-    .setLngLat([51.389, 35.6892])
+    .setLngLat([props.lngProps || 51.389, props.latProps || 35.6892])
     .addTo(map);
 
   function onDragEnd() {

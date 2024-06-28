@@ -1,11 +1,13 @@
-import { getAllJobs, } from 'src/composables/job/Job.api';
-import { ref } from 'vue';
-
-export const fetchJobs = () => {
-  const job = ref()
-  const loading = ref(true)
-  getAllJobs().then((response)=>{
-    job.value = response
-  }).catch((err)=> console.log(err)).finally(()=>loading.value = false)
-  return {job,loading};
+import { createProfileService } from 'src/composables/profile/Job.api';
+export const createProfile = async (data: any) => {
+  const { fetchData } = createProfileService();
+  await fetchData('profile', {}, { data })
+    .then((response) => {
+      if (response.ok) {
+        alert('Profile was successfully created');
+      }
+    })
+    .catch((err) => {
+      alert(err);
+    });
 };
