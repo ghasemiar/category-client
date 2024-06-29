@@ -95,7 +95,7 @@
       <q-input v-model="image" label="image" type="file" />
       <div class="tw-text-red-600">{{ errors.image }}</div>
     </div>
-    <div v-if="city" class="tw-bg-red-400 tw-w-full tw-h-[600px] tw-mt-10">
+    <div class="tw-bg-red-400 tw-w-full tw-h-[600px] tw-mt-10">
       <Map
         :lat-props="city?.lat"
         :lng-props="city?.lng"
@@ -109,34 +109,30 @@
 
 <script setup lang="js">
 import { useForm } from 'vee-validate';
-import { fetchCities } from 'src/composables/city/City.Req';
-import { fetchJobs } from 'src/composables/job/Job.Req';
-import { fetchProvinces } from 'src/composables/province/Province.Req';
-import { fetchCountries } from 'src/composables/country/Country.Req';
 import { ref, watch } from 'vue';
 import { sexOption } from 'src/composables/options';
 import Map from 'components/Map.vue';
 import { CreateProfileSchema } from 'src/composables/profile/ProfileValidation';
-import { createProfile } from 'src/composables/profile/Job.Req';
 import axios from 'axios';
+import { getAllProvince } from 'src/composables/province/Province.api';
+import { getAllJobs } from 'src/composables/job/Job.api';
+import { getAllCountries } from 'src/composables/country/Country.api';
+import { getAllCities } from 'src/composables/city/City.api';
 
-const coordinates = ref({ lat: null, lng: null });
-
+const coordinates = ref({ lat: 35.6892, lng: 51.389  });
 function updateCoordinates(newCoordinates) {
   coordinates.value = newCoordinates;
 }
 
 const cityOption = ref();
 const citiesLoading = ref(false);
-const { province: provinceOption, loading: provinceLoading } = fetchProvinces();
-const { job: jobOption, loading: jobLoading } = fetchJobs();
-const { country: countryOption, loading: countryLoading } = fetchCountries();
-
+const { data: provinceOption, loading: provinceLoading } = getAllProvince();
+const { data: jobOption, loading: jobLoading } = getAllJobs();
+const { data: countryOption, loading: countryLoading } = getAllCountries();
 const getCities = async (id) => {
-  const { data, loading } = await fetchCities(id);
-  console.log(data.value);
-  cityOption.value = data.value;
-  citiesLoading.value = loading.value;
+  const { data,loading } = await getAllCities(id)
+  cityOption.value = data.value
+  citiesLoading.value = data.value
 };
 
 const { handleSubmit, errors, defineField } = useForm({

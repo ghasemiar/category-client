@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', () => {
   const login = async (values: { username:string,password:string }) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/user/login',
+        'http://localhost:3001/api/user/login',
         values
       );
       console.log(response.data.token);
@@ -29,7 +29,7 @@ export const useAuthStore = defineStore('auth', () => {
   const register = async (values: { username:string,password:string,name:string,phone:string,email:string }) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/user/register',
+        'http://localhost:3001/api/user/register',
         values
       );
       setToken(response.data.token);
