@@ -1,5 +1,5 @@
 <template>
-  <div class="tw-container tw-mx-auto">
+  <div class="tw-m-10">
     <q-form @submit="onSubmit">
       <q-input
         v-model="username"
@@ -13,7 +13,7 @@
         label="Password"
         type="password"
         error-message="Please enter a valid password"
-        v-bind="passwordAttrs"
+        v-bind="passwordAttr"
       />
       <div>{{ errors.password }}</div>
       <q-btn type="submit" label="Login" />
@@ -42,7 +42,7 @@ const { handleSubmit, errors,defineField } = useForm({
 });
 
 const [username, usernameAttr] = defineField('username');
-const [password, passwordAttrs] = defineField('password');
+const [password, passwordAttr] = defineField('password');
 
 const onSubmit = handleSubmit(async (values) => {
   await authStore.login(values);

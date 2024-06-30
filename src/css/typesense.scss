@@ -7,7 +7,9 @@ a[class^='ais-'] {
   color: #21243d;
   text-decoration: none;
 }
-
+.ais-HierarchicalMenu-list--child {
+  margin-right: 24px;
+}
 /*
   We need to target the root element because Angular InstantSearch
   creates web components which are not targetable with the `*` selector.

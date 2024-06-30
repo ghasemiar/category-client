@@ -47,20 +47,20 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    if (error.response.status === 401) {
-      // Redirect to login page or perform other actions
-      console.log('Token expired or unauthorized!');
-      // Example redirect (replace with your actual router logic)
-      router.push('/login')
-    }
-    return Promise.reject(error);
-  }
-);
+// api.interceptors.response.use(
+//   (response) => {
+//     return response;
+//   },
+//   (error) => {
+//     if (error.response.status === 401) {
+//       // Redirect to login page or perform other actions
+//       console.log('Token expired or unauthorized!');
+//       // Example redirect (replace with your actual router logic)
+//       router.push({ path: '/login', replace: true }).then(r => console.log(r))
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
 

@@ -61,15 +61,11 @@
                   :key="index"
                   class="my-card"
                 >
-                  <img :src="'http://localhost:3001/storage/' + item.image" />
-
-                  <q-card-section>
-                    <div class="text-h6">{{ item.name }}</div>
-                  </q-card-section>
-
-                  <q-card-section class="q-pt-none">
-                    {{ item.description }}
-                  </q-card-section>
+                  <q-img :src="'http://localhost:3001/storage/' + item.image">
+                    <div class="absolute-bottom text-h6">
+                      {{ item.name }}
+                    </div>
+                  </q-img>
                 </q-card>
               </div>
             </template>
@@ -110,8 +106,4 @@ const toValue = (value, range)=> {
   ]
 }
 </script>
-<style lang="scss">
-.ais-HierarchicalMenu-list--child {
-  margin-left: 24px;
-}
-</style>
+
